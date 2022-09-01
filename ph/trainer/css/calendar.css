@@ -1,0 +1,427 @@
+/* Googlefont Rubik CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+.sidebar{
+  position: fixed;
+  height: 100%;
+  width: 240px;
+  background: #141517;
+  transition: all 0.5s ease;
+}
+.sidebar.active{
+  width: 60px;
+}
+.sidebar .logo-details{
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.sidebar .logo-details i{
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  min-width: 60px;
+  text-align: center
+}
+.sidebar .logo-details p{
+  font-size: 28px;
+  font-weight: 500;
+  color: #86ff71;
+  font-family: 'Anurati';
+  text-align: center;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.sidebar .logo-details .logo_name{
+  color: #80868B;
+  font-size: 24px;
+  font-weight: 500;
+  font-family: 'Azonix';
+  margin-top: 10px;
+  background: -webkit-linear-gradient(#eee, rgb(99, 99, 99));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sidebar .nav-links{
+  margin-top: 10px;
+}
+.sidebar .nav-links li{
+  position: relative;
+  list-style: none;
+  height: 50px;
+}
+
+
+.sidebar .nav-links li a{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.sidebar .nav-links li a.active{
+  background: #292b2e;
+}
+.sidebar .nav-links li a:hover{
+  background: #292b2e;
+}
+.sidebar .nav-links li i{
+  min-width: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+.sidebar .nav-links li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.sidebar .nav-links .log_out{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.home-section{
+  position: relative;
+  background: #f5f5f5;
+  min-height: 100vh;
+  width: calc(100% - 240px);
+  left: 240px;
+  transition: all 0.5s ease;
+}
+.sidebar.active ~ .home-section{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.home-section nav{
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: calc(100% - 240px);
+  left: 240px;
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+.sidebar.active ~ .home-section nav{
+  left: 60px;
+  width: calc(100% - 60px);
+}
+.home-section nav .sidebar-button{
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+}
+nav .sidebar-button i{
+    font-size: 35px;
+    margin-right: 10px;
+    cursor: pointer;
+ }
+.home-section .search-box{
+    position: relative;
+    height: 40px;
+    /* max-width: 550px; */
+    width: 300px;
+    margin: 0 20px;
+}
+.home-section .home-content{
+position: relative;
+padding-top: 104px;
+padding-left: 100px;
+padding-right: 100px;
+padding-bottom: 50px;
+}
+
+.fc-toolbar-title{
+  font-weight: 500 !important;
+}
+
+@media (max-width: 1240px) {
+.sidebar{
+    width: 60px;
+}
+.sidebar.active{
+    width: 220px;
+}
+.home-section{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+.sidebar.active ~ .home-section{
+    /* width: calc(100% - 220px); */
+    overflow: hidden;
+    left: 220px;
+}
+.home-section nav{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+.sidebar.active ~ .home-section nav{
+    width: calc(100% - 220px);
+    left: 220px;
+}
+}
+@media (max-width: 700px) {
+nav .sidebar-button .dashboard,
+nav .profile-details .admin_name,
+nav .profile-details i{
+    display: none;
+}
+.home-section nav .profile-details{
+    height: 50px;
+    min-width: 40px;
+}
+.home-content{
+    width: 560px;
+}
+}
+
+.fade-effect1{
+display:block;
+border:none;
+color:white;
+height:2px;
+background:black;
+background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, from(#ffffff39), to(#121317));
+}
+table {
+border-collapse: collapse;
+}
+
+td {
+border: 0px solid black;
+padding: 10px 10px 10px 20px;
+}
+
+th{
+padding: 15px 15px 15px 20px;
+text-decoration: none;
+margin-bottom: 10px;
+}
+tbody tr:nth-child(odd) {
+background-color: #fff;
+}
+tbody tr:nth-child(even) {
+background-color: #eee;
+}
+
+.table-members{
+width: 100%;
+border: none;
+margin-top: 10px;
+}
+.table-members tr th{
+font-size: 20px;
+text-align: left;
+}
+.row-action{
+display: flex;
+justify-content: center;
+}
+.calendar-input input{
+  padding: 5px;
+  width: 350px;
+  font-size: 18px;
+  border: 1px #e5e5e5 solid;
+  border-radius: 3px;
+  margin-right: 20px;
+}
+.calendar-input button{
+  margin-left: 100px;
+  font: 'rubik';
+  font-size: 17px;
+  padding: 1px 30px 1px 30px;
+  border-radius: 30px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  color: white;
+  border: 0px;
+  letter-spacing: 1px;
+  background-color: rgb(44,62,80);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  outline: none;
+  cursor: pointer;
+}
+.calendar-input button:hover{
+  box-shadow: 0px 0px 10px 1px rgb(44,62,80);
+  transition: .4s;
+}
+.calendar-input{
+  width: 48%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 5px;
+  border: 1px #e5e5e5 solid;
+  border-radius: 3px;
+}
+.about_btn{
+  position: relative;
+  z-index: 10;
+  width: 100px;
+  height: 25px;
+  border: 0px solid rgba(255, 255, 255, .5);
+  border-radius: 30px;
+  background-color: #141517;
+  font-family: 'Rubik';
+  
+  font-size: 13px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  outline: none;
+  color: #86ff71;
+  cursor: pointer;
+  margin-right: 10px;
+  }
+  
+.about_btn:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 10px 1px #86ff71;
+  border: 0px solid #86ff71;
+  transition: .4s;
+  }
+  
+.calendar{
+  padding-top: 40px;
+  padding-bottom: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 48%;
+  height: 580px;
+  background-color: white;
+  margin-top: 20px;
+  border: 1px #e5e5e5 solid;
+  border-radius: 3px;
+}
+.bottom-div{
+display: flex;
+width: 100%;
+
+}
+.calendar-table{
+  width: 48%;
+  margin-left: 4%;
+  background-color: white;
+  margin-top: 20px;
+  
+  height: 580px;
+  border: 1px #e5e5e5 solid;
+  border-radius: 3px;
+/* padding: 30px 20px 30px 20px; */
+/* height: 80%; */
+}
+.availability-header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  letter-spacing: 1px;
+}
+.availability-header h1{
+  color: black;
+  font-family: 'rubik';
+  letter-spacing: 1px;
+  font-size: 28px;
+ 
+    font-weight: 500 !important;
+  
+}
+.divider{
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+.fade-effect2{
+  display:block;
+  border:none;
+  color:white;
+  height:2px;
+  background:black;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 300, from(#86ff71), to(white));
+}
+/* scrollbarscrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #121317; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.308); 
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #86ff71; 
+}
+
+.fc-event-main{
+  background-color: #86ff71;
+  border: 0px !important;
+  border-radius: 50px !important;
+  padding: 3px !important;
+  text-align: center !important;
+  color: black !important;
+}
+
+.fc-h-event{
+  border: none !important;
+  border-radius: 20px !important;
+}
+
+.fc-daygrid-event{
+  white-space: normal !important;
+}
+
+.fc .fc-button-primary{
+  background-color: #121317 !important;
+}
+
+
+
+.calendar-input button{
+  margin-left: 80px;
+  font: 'rubik';
+  font-size: 16px;
+  padding: 1px 30px 1px 30px;
+  border-radius: 30px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  color: white;
+  border: 0px;
+  color: #86FF71;
+  letter-spacing: 1px;
+  background-color: #141517;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  outline: none;
+  cursor: pointer;
+  width: 200px;
+}
+.calendar-input button:hover{
+  box-shadow: 0px 0px 10px 1px #141517;
+  transition: .4s;
+}
+.justselect-wrapper {
+  position: relative;
+  width: 240px !important;
+}

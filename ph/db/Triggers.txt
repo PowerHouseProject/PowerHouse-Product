@@ -1,0 +1,170 @@
+************************************ progress ***************************************
+DELIMITER //
+DROP TRIGGER IF EXISTS new_member_progress // 
+CREATE TRIGGER new_member_progress
+AFTER INSERT ON member 
+FOR EACH ROW 
+	BEGIN 
+    	DECLARE membership_type INT;
+    	SET @membership_type = (SELECT membership_type FROM membership WHERE membership.member_id=NEW.member_id);
+    	IF(membership_type = 1) THEN 
+    		INSERT INTO `1m_package_progress`(member_id,attendance,bmi_values,bf_values) VALUES (NEW.member_id,'[[null,null,null,null,null]]',
+'[null,null,null,null,null,null,null,null,null,null,null,null]','[null,null,null,null,null,null,null,null,null,null,null,null]');
+    	END IF;
+        IF(membership_type = 3) THEN 
+    		INSERT INTO `3m_package_progress`(member_id,attendance,bmi_values,bf_values) VALUES (NEW.member_id,
+'[[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null]]'
+,'[null,null,null,null,null,null,null,null,null,null,null,null]',
+'[null,null,null,null,null,null,null,null,null,null,null,null]');
+    	END IF;
+        IF(membership_type = 6) THEN 
+    		INSERT INTO `6m_package_progress`(member_id,attendance,bmi_values,bf_values) VALUES (NEW.member_id,
+'[[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null]]'
+,'[null,null,null,null,null,null,null,null,null,null,null,null]',
+'[null,null,null,null,null,null,null,null,null,null,null,null]');
+    	END IF;
+        IF(membership_type = 12) THEN
+	INSERT INTO 12m_package_progress (member_id,attendance,bmi_values,bf_values) VALUES (NEW.member_id,
+'[[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null]]',
+'[null,null,null,null,null,null,null,null,null,null,null,null]',
+'[null,null,null,null,null,null,null,null,null,null,null,null]');
+    	END IF;
+   END // 
+DELIMITER ;     
+
+
+*********************************meal plan**************************************** 
+DELIMITER //
+DROP TRIGGER IF EXISTS after_member_insert // 
+CREATE TRIGGER after_member_insert
+AFTER INSERT ON member 
+FOR EACH ROW 
+	BEGIN
+    DECLARE assign_trainer INT;
+	SET @assign_trainert = (SELECT assign_trainer FROM member WHERE member.member_id=NEW.member_id);
+      IF (assign_trainer = 0) THEN
+        INSERT INTO meal_plan(member_id, trainer_id, monday_bkft, tuseday_bkft,wednesday_bkft,thursday_bkft,friday_bkft,saturday_bkft,sunday_bkft,monday_msnk, tuseday_msnk,wednesday_msnk,thursday_msnk,friday_msnk,saturday_msnk,sunday_msnk,monday_lunch, tuseday_lunch,wednesday_lunch,thursday_lunch,friday_lunch,saturday_lunch,sunday_lunch,monday_esnk, tuseday_esnk,wednesday_esnk,thursday_esnk,friday_esnk,saturday_esnk,sunday_esnk,monday_din, tuseday_din,wednesday_din,thursday_din,friday_din,saturday_din,sunday_din)
+	VALUES
+	(NEW.member_id,0,'Scrambled eggs with mushrooms and oatmeal','Protein pancakes with light-syrup, peanut butter and raspberries.','Chicken sausage with egg and roasted potatoes.','Ground turkey, egg, cheese and salsa in a whole-grain tortilla.','Blueberries, strawberries and vanilla Greek yogurt on overnight oats.','Ground turkey and egg with corn, bell peppers, cheese and salsa.','Eggs sunny-side up and avocado toast','Low-fat cottage cheese with blueberries','Hard-boiled eggs and an apple.','Greek yogurt and almonds.' ,'Yogurt with granola.','Jerky and mixed nuts.' ,'Can of tuna with crackers.','Protein balls and almond butter.','Venison burger, white rice and broccoli.','Sirloin steak, sweet potato and spinach salad with vinaigrette.','Turkey breast, basmati rice and mushrooms.','Chicken breast, baked potato, sour cream and broccoli.','Tilapia fillets with lime juice, black and pinto beans and seasonal veggies.','Tilapia fillet, potato wedges and bell peppers.','Pork tenderloin slices with roasted garlic potatoes and green beans.','Protein shake and a banana.','Protein shake and walnuts.','Protein shake and grapes.','Protein shake and mixed berries.','Protein shake and watermelon.','Protein shake and pear.','Protein shake and strawberries.','Salmon, quinoa and asparagus.','Ground turkey and marinara sauce over pasta.','Mackerel, brown rice and salad leaves with vinaigrette.','Stir-fry with chicken, egg, brown rice, broccoli, peas and carrots.','Ground beef with corn, brown rice, green peas and green beans.','Diced beef with rice, black beans, bell peppers, cheese and pico de gallo.','Turkey meatballs, marinara sauce and parmesan cheese over pasta.');
+	ELSE
+	 SET @trainer = (SELECT assign_trainer FROM member WHERE member.member_id=NEW.member_id);	
+
+		INSERT INTO meal_plan(member_id, trainer_id, monday_bkft, tuseday_bkft,wednesday_bkft,thursday_bkft,friday_bkft,saturday_bkft,sunday_bkft,monday_msnk, tuseday_msnk,wednesday_msnk,thursday_msnk,friday_msnk,saturday_msnk,sunday_msnk,monday_lunch, tuseday_lunch,wednesday_lunch,thursday_lunch,friday_lunch,saturday_lunch,sunday_lunch,monday_esnk, tuseday_esnk,wednesday_esnk,thursday_esnk,friday_esnk,saturday_esnk,sunday_esnk,monday_din, tuseday_din,wednesday_din,thursday_din,friday_din,saturday_din,sunday_din)
+		VALUES
+		(NEW.member_id,trainer,'Scrambled eggs with mushrooms and oatmeal','Protein pancakes with light-syrup, peanut butter and raspberries.','Chicken sausage with egg and roasted potatoes.','Ground turkey, egg, cheese and salsa in a whole-grain tortilla.','Blueberries, strawberries and vanilla Greek yogurt on overnight oats.','Ground turkey and egg with corn, bell peppers, cheese and salsa.','Eggs sunny-side up and avocado toast','Low-fat cottage cheese with blueberries','Hard-boiled eggs and an apple.','Greek yogurt and almonds.' ,'Yogurt with granola.','Jerky and mixed nuts.' ,'Can of tuna with crackers.','Protein balls and almond butter.','Venison burger, white rice and broccoli.','Sirloin steak, sweet potato and spinach salad with vinaigrette.','Turkey breast, basmati rice and mushrooms.','Chicken breast, baked potato, sour cream and broccoli.','Tilapia fillets with lime juice, black and pinto beans and seasonal veggies.','Tilapia fillet, potato wedges and bell peppers.','Pork tenderloin slices with roasted garlic potatoes and green beans.','Protein shake and a banana.','Protein shake and walnuts.','Protein shake and grapes.','Protein shake and mixed berries.','Protein shake and watermelon.','Protein shake and pear.','Protein shake and strawberries.','Salmon, quinoa and asparagus.','Ground turkey and marinara sauce over pasta.','Mackerel, brown rice and salad leaves with vinaigrette.','Stir-fry with chicken, egg, brown rice, broccoli, peas and carrots.','Ground beef with corn, brown rice, green peas and green beans.','Diced beef with rice, black beans, bell peppers, cheese and pico de gallo.','Turkey meatballs, marinara sauce and parmesan cheese over pasta.');
+      END IF;    
+      END // 
+DELIMITER ;
+
+
+******************************shedule******************************************
+DELIMITER //
+DROP TRIGGER IF EXISTS new_member_schedule // 
+CREATE TRIGGER new_member_schedule
+AFTER INSERT ON member 
+FOR EACH ROW 
+	BEGIN
+		INSERT INTO schedule(member_id, 
+			day1_ex1,day2_ex1,day3_ex1,day4_ex1,day5_ex1,day6_ex1,day7_ex1,
+			day1_ex2,day2_ex2,day3_ex2,day4_ex2,day5_ex2,day6_ex2,day7_ex2,
+			day1_ex3,day2_ex3,day3_ex3,day4_ex3,day5_ex3,day6_ex3,day7_ex3,
+			day1_ex4,day2_ex4,day3_ex4,day4_ex4,day5_ex4,day6_ex4,day7_ex4,
+			day1_ex5,day2_ex5,day3_ex5,day4_ex5,day5_ex5,day6_ex5,day7_ex5,
+			day1_ex6,day2_ex6,day3_ex6,day4_ex6,day5_ex6,day6_ex6,day7_ex6)
+		VALUES
+		(NEW.member_id,			
+			'YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo0OiJMZWdzIjtpOjE7czoxOToiYmFyYmVsbCBiYWNrIHNxdWF0cyI7aToyO3M6MToiNSI7aTozO3M6MToiNSI7fQ==','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czoxNToiQmFjay9oYW1zdHJpbmdzIjtpOjE7czoyOToiYmFyYmVsbCBvciB0cmFwIGJhciBkZWFkbGlmdHMiO2k6MjtzOjE6IjUiO2k6MztzOjE6IjUiO30=','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo0OiJMZWdzIjtpOjE7czo5OiJsZWcgcHJlc3MiO2k6MjtzOjE6IjUiO2k6MztzOjE6IjUiO30=','YToxOntpOjA7czoxOiIwIjt9',
+			'YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo1OiJDaGVzdCI7aToxO3M6MjQ6ImZsYXQgYmFyYmVsbCBiZW5jaCBwcmVzcyI7aToyO3M6MDoiIjtpOjM7czowOiIiO30=','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo0OiJCYWNrIjtpOjE7czoyNDoicHVsbHVwcyBvciBsYXQgcHVsbGRvd25zIjtpOjI7czoxOiI0IjtpOjM7czoxOiI4Ijt9','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo0OiJCYWNrIjtpOjE7czoxMDoiVC1iYXIgcm93cyI7aToyO3M6MToiMyI7aTozO3M6MToiOCI7fQ==','YToxOntpOjA7czoxOiIwIjt9',
+			'YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo0OiJCYWNrIjtpOjE7czoxNzoic2VhdGVkIGNhYmxlIHJvd3MiO2k6MjtzOjA6IiI7aTozO3M6MDoiIjt9','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo1OiJDaGVzdCI7aToxO3M6MzM6ImJhcmJlbGwgb3IgZHVtYmJlbGwgaW5jbGluZSBwcmVzcyI7aToyO3M6MToiNCI7aTozO3M6MToiOCI7fQ==','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo1OiJDaGVzdCI7aToxO3M6Mjk6Im1hY2hpbmUgb3IgZHVtYmJlbGwgY2hlc3QgZmx5IjtpOjI7czoxOiIzIjtpOjM7czoxOiI4Ijt9','YToxOntpOjA7czoxOiIwIjt9',
+			'YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo5OiJTaG91bGRlcnMiO2k6MTtzOjMwOiJzZWF0ZWQgZHVtYmJlbGwgc2hvdWxkZXIgcHJlc3MiO2k6MjtzOjA6IiI7aTozO3M6MDoiIjt9','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo5OiJTaG91bGRlcnMiO2k6MTtzOjIyOiJtYWNoaW5lIHNob3VsZGVyIHByZXNzIjtpOjI7czoxOiI0IjtpOjM7czoxOiI4Ijt9','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo5OiJTaG91bGRlcnMiO2k6MTtzOjMxOiJvbmUtYXJtIGR1bWJiZWxsIHNob3VsZGVyIHByZXNzIjtpOjI7czoxOiIzIjtpOjM7czoxOiI4Ijt9','YToxOntpOjA7czoxOiIwIjt9',
+			'YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo3OiJUcmljZXBzIjtpOjE7czoyNzoiY2FibGUgcm9wZSB0cmljZXAgcHVzaGRvd25zIjtpOjI7czowOiIiO2k6MztzOjA6IiI7fQ==','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo2OiJCaWNlcHMiO2k6MTtzOjMxOiJiYXJiZWxsIG9yIGR1bWJiZWxsIGJpY2VwIGN1cmxzIjtpOjI7czoxOiIzIjtpOjM7czoyOiIxMCI7fQ==','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo3OiJUcmljZXBzIjtpOjE7czozNzoiZHVtYmJlbGwgb3IgbWFjaGluZSB0cmljZXAgZXh0ZW5zaW9ucyI7aToyO3M6MToiMyI7aTozO3M6MjoiMTAiO30=','YToxOntpOjA7czoxOiIwIjt9',
+			'YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo5OiJTaG91bGRlcnMiO2k6MTtzOjE0OiJsYXRlcmFsIHJhaXNlcyI7aToyO3M6MToiMyI7aTozO3M6MjoiMTIiO30=','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czo2OiJDYWx2ZXMiO2k6MTtzOjIwOiJzdGFuZGluZyBjYWxmIHJhaXNlcyI7aToyO3M6MToiMyI7aTozO3M6MjoiMTAiO30=','YToxOntpOjA7czoxOiIwIjt9','YTo0OntpOjA7czozOiJBYnMiO2k6MTtzOjE2OiJkZWNsaW5lIGNydW5jaGVzIjtpOjI7czoxOiIzIjtpOjM7czoyOiIxMiI7fQ==','YToxOntpOjA7czoxOiIwIjt9'
+		);
+    
+      END // 
+DELIMITER ;                                     
+
+
+ALTER TABLE schedule
+ALTER schedule.day1_ex1 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day1_ex2 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day1_ex3 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day1_ex4 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day1_ex5 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day1_ex6 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day2_ex1 SET DEFAULT 'YTo0OntpOjA7czo0OiJMZWdzIjtpOjE7czoxOToiYmFyYmVsbCBiYWNrIHNxdWF0cyI7aToyO3M6MToiNSI7aTozO3M6MToiNSI7fQ==';
+ALTER schedule.day2_ex2 SET DEFAULT 'YTo0OntpOjA7czo1OiJDaGVzdCI7aToxO3M6MjQ6ImZsYXQgYmFyYmVsbCBiZW5jaCBwcmVzcyI7aToyO3M6MDoiIjtpOjM7czowOiIiO30=';
+ALTER schedule.day2_ex3 SET DEFAULT 'YTo0OntpOjA7czo0OiJCYWNrIjtpOjE7czoxNzoic2VhdGVkIGNhYmxlIHJvd3MiO2k6MjtzOjA6IiI7aTozO3M6MDoiIjt9';
+ALTER schedule.day2_ex4 SET DEFAULT 'YTo0OntpOjA7czo5OiJTaG91bGRlcnMiO2k6MTtzOjMwOiJzZWF0ZWQgZHVtYmJlbGwgc2hvdWxkZXIgcHJlc3MiO2k6MjtzOjA6IiI7aTozO3M6MDoiIjt9';
+ALTER schedule.day2_ex5 SET DEFAULT 'YTo0OntpOjA7czo3OiJUcmljZXBzIjtpOjE7czoyNzoiY2FibGUgcm9wZSB0cmljZXAgcHVzaGRvd25zIjtpOjI7czowOiIiO2k6MztzOjA6IiI7fQ==';
+ALTER schedule.day2_ex6 SET DEFAULT 'YTo0OntpOjA7czo5OiJTaG91bGRlcnMiO2k6MTtzOjE0OiJsYXRlcmFsIHJhaXNlcyI7aToyO3M6MToiMyI7aTozO3M6MjoiMTIiO30=';
+ALTER schedule.day3_ex1 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day3_ex2 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day3_ex3 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day3_ex4 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day3_ex5 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day3_ex6 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day4_ex1 SET DEFAULT 'YTo0OntpOjA7czoxNToiQmFjay9oYW1zdHJpbmdzIjtpOjE7czoyOToiYmFyYmVsbCBvciB0cmFwIGJhciBkZWFkbGlmdHMiO2k6MjtzOjE6IjUiO2k6MztzOjE6IjUiO30=';
+ALTER schedule.day4_ex2 SET DEFAULT 'YTo0OntpOjA7czo0OiJCYWNrIjtpOjE7czoyNDoicHVsbHVwcyBvciBsYXQgcHVsbGRvd25zIjtpOjI7czoxOiI0IjtpOjM7czoxOiI4Ijt9';
+ALTER schedule.day4_ex3 SET DEFAULT YTo0OntpOjA7czo1OiJDaGVzdCI7aToxO3M6MzM6ImJhcmJlbGwgb3IgZHVtYmJlbGwgaW5jbGluZSBwcmVzcyI7aToyO3M6MToiNCI7aTozO3M6MToiOCI7fQ==';
+ALTER schedule.day4_ex4 SET DEFAULT 'YTo0OntpOjA7czo5OiJTaG91bGRlcnMiO2k6MTtzOjIyOiJtYWNoaW5lIHNob3VsZGVyIHByZXNzIjtpOjI7czoxOiI0IjtpOjM7czoxOiI4Ijt9';
+ALTER schedule.day4_ex5 SET DEFAULT 'YTo0OntpOjA7czo2OiJCaWNlcHMiO2k6MTtzOjMxOiJiYXJiZWxsIG9yIGR1bWJiZWxsIGJpY2VwIGN1cmxzIjtpOjI7czoxOiIzIjtpOjM7czoyOiIxMCI7fQ==';
+ALTER schedule.day4_ex6 SET DEFAULT 'YTo0OntpOjA7czo2OiJDYWx2ZXMiO2k6MTtzOjIwOiJzdGFuZGluZyBjYWxmIHJhaXNlcyI7aToyO3M6MToiMyI7aTozO3M6MjoiMTAiO30=';
+ALTER schedule.day5_ex1 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day5_ex2 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day5_ex3 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day5_ex4 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day5_ex5 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day5_ex6 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day6_ex1 SET DEFAULT 'YTo0OntpOjA7czo0OiJMZWdzIjtpOjE7czo5OiJsZWcgcHJlc3MiO2k6MjtzOjE6IjUiO2k6MztzOjE6IjUiO30=';
+ALTER schedule.day6_ex2 SET DEFAULT 'YTo0OntpOjA7czo0OiJCYWNrIjtpOjE7czoxMDoiVC1iYXIgcm93cyI7aToyO3M6MToiMyI7aTozO3M6MToiOCI7fQ==';
+ALTER schedule.day6_ex3 SET DEFAULT 'YTo0OntpOjA7czo1OiJDaGVzdCI7aToxO3M6Mjk6Im1hY2hpbmUgb3IgZHVtYmJlbGwgY2hlc3QgZmx5IjtpOjI7czoxOiIzIjtpOjM7czoxOiI4Ijt9';
+ALTER schedule.day6_ex4 SET DEFAULT 'YTo0OntpOjA7czo5OiJTaG91bGRlcnMiO2k6MTtzOjMxOiJvbmUtYXJtIGR1bWJiZWxsIHNob3VsZGVyIHByZXNzIjtpOjI7czoxOiIzIjtpOjM7czoxOiI4Ijt9';
+ALTER schedule.day6_ex5 SET DEFAULT 'YTo0OntpOjA7czo3OiJUcmljZXBzIjtpOjE7czozNzoiZHVtYmJlbGwgb3IgbWFjaGluZSB0cmljZXAgZXh0ZW5zaW9ucyI7aToyO3M6MToiMyI7aTozO3M6MjoiMTAiO30=';
+ALTER schedule.day6_ex6 SET DEFAULT 'YTo0OntpOjA7czozOiJBYnMiO2k6MTtzOjE2OiJkZWNsaW5lIGNydW5jaGVzIjtpOjI7czoxOiIzIjtpOjM7czoyOiIxMiI7fQ==';
+ALTER schedule.day7_ex1 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day7_ex2 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day7_ex3 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day7_ex4 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day7_ex5 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+ALTER schedule.day7_ex6 SET DEFAULT 'YToxOntpOjA7czoxOiIwIjt9';
+
+
+ALTER TABLE meal_plan
+ALTER meal_plan.monday_bkft SET DEFAULT 'Scrambled eggs with mushrooms and oatmeal';
+ALTER meal_plan.tuseday_bkft SET DEFAULT 'Protein pancakes with light-syrup, peanut butter and raspberries.';
+ALTER meal_plan.wednesday_bkft SET DEFAULT 'Chicken sausage with egg and roasted potatoes.';
+ALTER meal_plan.thursday_bkft SET DEFAULT 'Ground turkey, egg, cheese and salsa in a whole-grain tortilla.';
+ALTER meal_plan.friday_bkft SET DEFAULT 'Blueberries, strawberries and vanilla Greek yogurt on overnight oats.';
+ALTER meal_plan.saturday_bkft SET DEFAULT 'Ground turkey and egg with corn, bell peppers, cheese and salsa.';
+ALTER meal_plan.sunday_bkft SET DEFAULT 'Eggs sunny-side up and avocado toast','Low-fat cottage cheese with blueberries';
+ALTER meal_plan.monday_msnk SET DEFAULT 'Hard-boiled eggs and an apple.';
+ALTER meal_plan.tuseday_msnk SET DEFAULT 'Greek yogurt and almonds.';
+ALTER meal_plan.wednesday_msnk SET DEFAULT 'Yogurt with granola.';
+ALTER meal_plan.thursday_msnk SET DEFAULT 'Jerky and mixed nuts.';
+ALTER meal_plan.friday_msnk SET DEFAULT 'Can of tuna with crackers.';
+ALTER meal_plan.saturday_msnk SET DEFAULT 'Protein balls and almond butter.';
+ALTER meal_plan.sunday_msnk SET DEFAULT 'Venison burger, white rice and broccoli.';
+ALTER meal_plan.monday_lunch SET DEFAULT 'Sirloin steak, sweet potato and spinach salad with vinaigrette.';
+ALTER meal_plan.tuseday_lunch SET DEFAULT 'Turkey breast, basmati rice and mushrooms.';
+ALTER meal_plan.wednesday_lunch SET DEFAULT 'Chicken breast, baked potato, sour cream and broccoli.';
+ALTER meal_plan.thursday_lunch SET DEFAULT 'Tilapia fillets with lime juice, black and pinto beans and seasonal veggies.';
+ALTER meal_plan.friday_lunch SET DEFAULT 'Tilapia fillet, potato wedges and bell peppers.';
+ALTER meal_plan.saturday_lunch SET DEFAULT 'Pork tenderloin slices with roasted garlic potatoes and green beans.';
+ALTER meal_plan.sunday_lunch SET DEFAULT 'Chicken breast, baked potato, sour cream and broccoli.';
+ALTER meal_plan.monday_esnk SET DEFAULT 'Protein shake and a banana.';
+ALTER meal_plan.tuseday_esnk SET DEFAULT 'Protein shake and walnuts.';
+ALTER meal_plan.wednesday_esnk SET DEFAULT 'Protein shake and grapes.';
+ALTER meal_plan.thursday_esnk SET DEFAULT 'Protein shake and mixed berries.';
+ALTER meal_plan.friday_esnk SET DEFAULT 'Protein shake and watermelon.';
+ALTER meal_plan.saturday_esnk SET DEFAULT 'Protein shake and pear.';
+ALTER meal_plan.sunday_esnk SET DEFAULT 'Protein shake and strawberries.';
+ALTER meal_plan.monday_din SET DEFAULT 'Salmon, quinoa and asparagus.';
+ALTER meal_plan.tuseday_din SET DEFAULT 'Ground turkey and marinara sauce over pasta.';
+ALTER meal_plan.wednesday_din SET DEFAULT 'Mackerel, brown rice and salad leaves with vinaigrette.';
+ALTER meal_plan.thursday_din SET DEFAULT 'Stir-fry with chicken, egg, brown rice, broccoli, peas and carrots.';
+ALTER meal_plan.friday_din SET DEFAULT 'Ground beef with corn, brown rice, green peas and green beans.';
+ALTER meal_plan.saturday_din SET DEFAULT 'Diced beef with rice, black beans, bell peppers, cheese and pico de gallo.';
+ALTER meal_plan.sunday_din SET DEFAULT 'Turkey meatballs, marinara sauce and parmesan cheese over pasta.';
+
+  

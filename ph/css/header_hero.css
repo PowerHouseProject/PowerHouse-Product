@@ -1,0 +1,433 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+
+@font-face {
+  font-family: "Anurati";
+  src: url("Anurati-Regular.otf");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "Azonix";
+  src: url("Azonix.otf");
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #121317;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9999;
+}
+.center {
+  width: 30%;
+  /* display: flex; */
+  /* justify-content: center;  */
+}
+
+.center h1 {
+  font-family: "Anurati";
+  color: white;
+  margin: 0px;
+  font-weight: 300;
+  text-align: center;
+  background: -webkit-linear-gradient(#eee, rgb(99, 99, 99));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.center h2 {
+  font-family: "Anurati";
+  color: white;
+  margin: 0px;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: -17px;
+  color: #86ff71;
+}
+
+.left {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.left li a {
+  font-family: "Rubik";
+  text-decoration: none;
+  color: white;
+  font-size: 13px;
+  position: relative;
+  /* color: #000; */
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+}
+
+.left li a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #86ff71;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.left li a:hover::before {
+  transform: scaleX(0.4);
+}
+
+/* .left li a:hover + div{
+  visibility: visible;
+  transition: visibility 5s;
+} */
+
+/* .left li a:not(:hover) + div{
+  visibility: hidden;
+  transition: visibility 5s;
+} */
+
+
+.rside {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn,
+.btn::after {
+  width: 75px;
+  height: 27px;
+  font-size: 14px;
+  font-family: "Rubik";
+  font-weight: 500;
+  background: linear-gradient(45deg, transparent 0%, #86ff71 0%);
+  border: 0;
+  color: black;
+  /* letter-spacing: 3px;
+    line-height: 88px; */
+  /* box-shadow: 6px 0px 0px #00E6F6; */
+  outline: transparent;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.showcase {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  z-index: 10;
+  /* padding: 0 0px; */
+}
+
+.video-container {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+}
+
+.video-container video {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.video-container:after {
+  content: "";
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.content h1 {
+  font-family: "Anurati";
+  color: white;
+  margin: 0px;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 50px;
+  background: -webkit-linear-gradient(#eee, rgb(105, 105, 105));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content p {
+  font-family: "Rubik";
+  color: #e6e6e6c5;
+  margin-top: 15px;
+  font-size: 18px;
+  /* font-weight: 100; */
+  padding-left: 350px;
+  padding-right: 350px;
+  padding-bottom: 20px;
+}
+
+.readmore_btn {
+  position: relative;
+  z-index: 10;
+  width: 130px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-family: "Azonix";
+  color: #e6e6e6c5;
+  font-size: 12px;
+  letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  outline: none;
+  cursor: pointer;
+}
+
+.readmore_btn:hover {
+  color: #e6e6e6c5;
+  box-shadow: 0px 0px 10px 1px #86ff71;
+  border: 1px solid #86ff71;
+  transition: 0.4s;
+}
+
+.content {
+  z-index: 2;
+
+  align-items: center;
+  justify-content: center;
+  margin-top: 400px;
+}
+
+.btnn,
+.btnn::after {
+  width: 280px;
+  height: 56px;
+  font-size: 20px;
+  font-family: "Rubik";
+  background: linear-gradient(45deg, transparent 5%, #86ff71 5%);
+  border: 0;
+  color: rgb(0, 0, 0);
+  letter-spacing: 3px;
+  /* line-height: 88px; */
+  box-shadow: 0px 0px 0px #000000;
+  outline: transparent;
+  position: relative;
+  text-decoration: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btnn::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(50% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(0% -6px 85% 0);
+  --slice-4: inset(0% -6px 43% 0);
+  --slice-5: inset(0% 6px 5% 0);
+
+  content: "Join the Academy";
+  display: block;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    #000000 3%,
+    #000000 5%,
+    #86ff71 5%
+  );
+  text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #000000;
+  clip-path: var(--slice-0);
+}
+
+.btnn:hover::after {
+  animation: 0.5s glitch;
+  animation-timing-function: steps(1, end);
+}
+
+.media {
+  z-index: 9998;
+
+  position: fixed;
+  top: 50px;
+  margin-left: 1300px;
+  margin-top: 550px;
+}
+
+.media a {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.media a i {
+  font-size: 25px;
+  z-index: 9998;
+}
+
+.media:hover .label-menu {
+  display: inline-block;
+}
+
+.label-menu {
+  display: none;
+  color: white;
+  font-family: "Rubik";
+  font-size: 10px;
+}
+
+/* -------------------------Drop Downmenu ------------------------*/
+
+.link {
+  background: none;
+  border: none;
+  color: white;
+  font-family: "Anurati";
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.dropdown .active > .link,
+.link:hover {
+  /* color: black; */
+  /* background-color: #86ff71; */
+  /* font-weight: bolder; */
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: calc(150px);
+  top: calc(100% + 0.25rem);
+  background-color: black;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  /* display: block; */
+  visibility: hidden;
+  /* visibility: visible; */
+  /* pointer-events: none; */
+  opacity: 0;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  /* gap: 2rem;  */
+  z-index: 600;
+  transform: translateY(-10px);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+
+}
+
+.dropdown .active > .link + .dropdown-menu {
+   /* visibility: visible; */
+  transform: translateY(0);
+  /* pointer-events: auto; */
+}
+
+/* .information-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 2rem; 
+  z-index: 600;
+  
+} */
+
+.dropdown-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* --------------------------login dropdown-------------------- */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: "Rubic";
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 150px;
+  overflow: auto;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transform: translateY(15px);
+  margin-top: 30%;
+  margin-left: -45%;
+  border: 3px solid black;
+}
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  height: 8px;
+  /* align-items: center; */
+  justify-content: center;
+  text-decoration: none;
+  /* display: block; */
+  cursor: pointer;
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "Rubik";
+}
+
+
+.show {
+  display: block;
+}
+
+.dropdown-content a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #86ff71;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.dropdown-content a:hover::before {
+  transform: scaleX(0.4);
+}
+
+

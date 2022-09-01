@@ -1,0 +1,225 @@
+@font-face {
+    font-family: "Anurati";
+    src: url("Anurati-Regular.otf");
+    }
+    
+@font-face {
+        font-family: "Azonix";
+        src :url("Azonix.otf");
+        }
+
+
+
+
+ .footer_container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: #111;
+    font-family: 'Rubik';
+    padding-top: 40px;
+    padding-bottom: 40px;
+   
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+}
+
+ .footer_container .sec-aboutus{
+    /* margin-right: 30px; */
+    width: 40%;
+    padding-left: 150px;
+}
+
+ .footer_container .sec-aboutus  h1{
+    position: relative;
+    color: #fff;
+    font-size: 23px;
+    font-family: 'Anurati';
+    font-weight: 500;
+    /* margin-bottom: 15px; */
+    background: -webkit-linear-gradient(#eee, rgb(99, 99, 99));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   
+}
+
+ .footer_container h2{
+    position: relative;
+    color: #fff;
+    font-size: 17px;
+    font-family: 'Azonix';
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+ .footer_container .sec-aboutus  h2 {
+    /* position: relative; */
+    
+    font-size: 15px;
+    font-family: 'Anurati';
+    margin-top: -15px;    
+    color: #86ff71;
+}
+
+ .footer_container h2:before{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #86ff71;
+}
+
+ .footer_container .sec-aboutus  h2:before{
+    /* content: ''; */
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: transparent;
+}
+
+.footer_container p{
+    color: #999;
+    padding-right: 50px;
+    font-size: 15px;
+}
+
+.icon{
+    /* padding-bottom: 20px;
+    padding-top: 20px; */
+    display: flex;
+}
+
+.icon a{
+
+    /* width: 40px;
+    height: 40px; */
+    /* background: #222; */
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    margin-right: 25px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: rgb(103, 103, 103);
+    font-size: 20px;
+}
+
+.icon a:hover{
+
+    /* background: #86ff71; */
+    color: rgb(255, 255, 255);
+}
+
+.quickLinks{
+    position:relative;
+    width: 30%;
+    padding-left: 100px;
+}
+
+.quickLinks ul li{
+    list-style: none;
+}
+
+.quickLinks ul li a{
+    color: #999;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block; 
+    font-size: 15px;
+}
+
+.quickLinks ul{
+    padding: 0%;
+}
+
+.quickLinks ul li a:hover{
+    color: #fff;
+}
+
+.contact{
+   width: 30%;
+   padding-left: 100px;
+   margin-left: -20px;
+   /* margin-right: 0 !important; */
+}
+
+.contact .info{
+    position: relative;
+    font-size: 15px;
+    padding: 0%;
+}
+
+
+
+.contact .info li{
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    
+}
+
+
+
+.contact .info li a{
+    color: #999;
+    text-decoration: none;
+    
+    
+}
+
+.contact .info li a:hover{
+    color: #fff;
+}
+
+.contact .fa{
+    color: #999;
+    font-size: 19px;
+   
+}
+
+.contact .fa:hover{
+    color: rgb(255, 255, 255);
+}
+
+.copyrightText{
+    /* display: flex;
+    
+    justify-content: center; */
+    margin: auto;
+    font-family: 'Rubik';
+    
+    background: #181818;
+    padding: 8px 100px;
+    color: #999;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.cp{
+    font-family: 'Anurati';
+}
+
+@media(max-width:991px)
+{
+    
+
+     .footer_container{
+        flex-direction: column;
+    }
+
+     .footer_container .sec-aboutus{
+        width: 100%;
+    }
+
+     .footer_container .sec-aboutus,.quickLinks,.contact{
+        width: 100%;
+    }
+    .copyrightText{
+        padding: 8px 40px;
+    }
+}

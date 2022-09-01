@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+    font-family: "Anurati";
+    src: url("Anurati-Regular.otf");
+    }
+    
+@font-face {
+        font-family: "Azonix";
+        src :url("Azonix.otf");
+    
+        }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.contact{
+    display: flex;
+}
+.container{
+    color: white;
+    width: 50%;
+    height: 100vh;
+    background: rgb(29,27,32);
+    
+}
+.content{
+    padding: 50px 50px;
+    text-align: center;
+    height: 35vh;
+}
+.content h2{
+    padding-bottom: 40px;
+    font-size: 36px;
+    font-weight: 500;
+    font-family: "Azonix";
+    padding-top: 40px;
+}
+.contactform{
+   text-align: center;
+    width: 50%;
+    height: 100vh;
+    background: rgb(21,20,23);
+    padding:50px
+}
+
+.contactInfo{
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    justify-content: center;
+    padding-left: 250px;
+    padding-bottom: 140px;
+}
+.contactInfo .box{
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+.contactInfo .box .icon,
+.contactInfo .box .icon a{
+    color: black;
+    min-width: 60px;
+    height: 60px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 26px;
+}
+.contactInfo .box .text{
+    display: flex;
+    margin-left: 30px;
+    font-size: 16px;
+    flex-direction: column;
+    font-weight: 300;
+}
+.contactInfo .box .text h3{
+    color: #00FF00;
+    padding-bottom: 5px;
+    font-weight: 500;
+}
+.contactform h2{
+    color: white;
+    text-align: center;
+    padding-bottom: 70px;
+    font-weight: 500;
+    font-size: 36px;
+    padding-top: 40px;
+}
+.contactform .inputbox{
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+}
+.contactform .inputbox input,
+.contactform .inputbox textarea{
+    width: 80%;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 15px;
+    margin: 20px 0;
+    border: 2px solid #00FF00;
+    border-radius: 6px;
+    outline: none;
+    resize: none;
+}
+ .contactform .inputbox ::placeholder{
+    position: absolute;
+    left: 0;
+    padding-left: 20px;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.contactform input[type="submit"]{
+    width: 25%;
+    background: #00FF00;
+    font-weight: 600;
+    margin-top: 40px;
+    cursor: pointer;
+    font-size: 30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.contactform input[type="submit"]:hover{
+    background: rgba(17, 204, 48, 0.897);
+}
+

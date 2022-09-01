@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "Anurati";
+    src: url("Anurati-Regular.otf");
+    }
+    
+@font-face {
+        font-family: "Azonix";
+        src :url("Azonix.otf");
+        }
+
+
+.copyrightText{
+    /* display: flex;
+    
+    justify-content: center; */
+    margin: auto;
+    font-family: 'Rubik';
+    
+    background: #181818;
+    padding: 8px 100px;
+    color: #999;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.cp{
+    font-family: 'Anurati';
+}
+
+@media(max-width:991px)
+{
+    .copyrightText{
+        padding: 8px 40px;
+    }
+}

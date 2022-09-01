@@ -1,0 +1,255 @@
+
+@font-face {
+    font-family: "Azonix";
+    src: url("Azonix-Regular.otf");
+
+    }
+
+::selection { color: none; background: none; }
+
+.calculate, .result {
+  height: 500px;
+  width: 600px;
+  /* padding-left: 450px;
+  padding-right: 450px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  
+}
+
+.result {
+    display: none;
+}
+
+ .calculate .title {
+  font-size: 20px;
+  /* font-weight: bold; */
+  font-family: 'Azonix';
+  /* background: #232323; */
+  color: #86ff71;
+}
+
+
+
+.calculate .gender {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+}
+
+.calculate .gender div {
+    height: 32vmin;
+    width: 32vmin;
+    background: #232323;
+    /* box-shadow: 0 .5vmin 1vmin .6vmin #292929; */
+    font-size: 8vmin;
+    font-weight: bold;
+    font-family: 'Rubik'-serif;
+    text-align: center;
+    line-height: 32vmin;
+
+}
+
+.calculate .gender div span {
+    background: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.calculate .gender .male span {
+    background: -webkit-linear-gradient(45deg, #8e2de2, #4a00e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.calculate .gender .female.active span {
+    background: -webkit-linear-gradient(45deg, #f953c6, #b91d73);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.calculate .height {
+    /* margin-top: 4vmin; */
+    width: 55%;
+    height: 180px;
+    background: #232323;
+    box-shadow: 0.5vmin 0vmin .6vmin #292929;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    font-size: 20px;
+    padding-top: 20px;
+    /* font-weight: bold; */
+    font-family: 'Rubik';
+    color: #555;
+}
+
+.calculate .height .val {
+    color: #fff;
+    font-size: 25px;
+    margin: 0;
+    margin-top: -2vmin;
+
+}
+
+.calculate .height .val i {
+    text-align: center;
+    line-height: 6vmin;
+    font-size: 25px;
+    /* font-weight: bold; */
+    padding: 3vmin;
+    cursor: pointer;
+}
+
+.calculate .height .val span {
+    font-size: 25px;
+    /* font-weight: bold; */
+    font-family: 'Rubik'-serif;
+}
+
+.calculate .height input {
+    -webkit-appearance: none;
+    width: 60%;
+    height: 15px;
+    background: #333;
+    border-radius: 50vmin;
+    overflow: hidden;
+}
+
+.calculate .height input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: linear-gradient(45deg, #86ff71, #86ff71);
+    box-shadow: -50vmin 0 0 50vmin #86ff71;
+}
+
+
+
+
+.calculate .weight {
+    width: 55%;
+    height: 150px;
+    background: #232323;
+    box-shadow: 0.5vmin 0vmin .6vmin #292929;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    font-size: 20px;
+    /* font-weight: bold; */
+    font-family: 'Rubik';
+    color: #555;
+}
+
+.calculate .weight .val {
+    color: #fff;
+    font-size: 25px;
+    margin: 0;
+    margin-top: -2vmin;
+
+}
+
+.calculate .weight .val i {
+    text-align: center;
+    line-height: 6vmin;
+    font-size: 25px;
+    /* font-weight: bold; */
+    padding: 3vmin;
+    cursor: pointer;
+}
+
+.calculate .weight .val span {
+    font-size: 25px;
+    /* font-weight: bold; */
+    font-family: 'Rubik'-serif;
+}
+
+.calculate .weight input {
+    -webkit-appearance: none;
+    width: 60%;
+    height: 15px;
+    background: #333;
+    border-radius: 50vmin;
+    overflow: hidden;
+}
+
+.calculate .weight input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: linear-gradient(45deg, #86ff71, #86ff71);
+    box-shadow: -50vmin 0 0 50vmin #86ff71;
+}
+
+.calculate .calc, .result .recal {
+    height: 50px;
+    width: 55%;
+    /* line-height: 14vmin; */
+    margin-top: 0px;
+    color: #86ff71;
+    font-size: 18px;
+    /* font-weight: bold; */
+    font-family: 'Azonix';
+    background: #232323;
+    box-shadow: 0.5vmin 0vmin .6vmin #292929;
+    text-align: center;
+    padding-top:20px;
+    cursor: pointer;
+}
+
+.calculate .calc:hover,
+.result .recal:hover {
+    color: #86ff71;
+}
+
+.result .recal {
+    margin-top: 0px;
+
+}
+
+
+.result .bmi {
+    height: 150px;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #232323;
+    box-shadow: 0.5vmin 0vmin .6vmin #292929;
+    margin-top: 20px;
+}
+
+.result .bmi .title {
+    color: #555;
+    font-size: 25px;
+    /* font-weight: bold; */
+    font-family: 'Rubik';
+}
+
+.result .bmi .val {
+    font-size: 25px;
+    /* font-weight: bold; */
+    color: #fff;
+    font-family: 'Rubik';
+}
+
+.result .text {
+    font-size: 25px;
+    /* font-weight: bold; */
+    font-family: 'Rubik';
+    color: #fff;
+    width: 55%;
+    text-align: center;
+    /* margin-top: 10px; */
+    background: #232323;
+    box-shadow: 0.5vmin 0vmin .6vmin #292929;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
